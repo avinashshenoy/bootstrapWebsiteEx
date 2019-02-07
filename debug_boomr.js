@@ -3555,14 +3555,13 @@ BOOMR_check_doc_domain();
 			params = urlFirst.concat(this.getVarsOfPriority(data, 0), urlLast);
 			paramsJoined = params.join("&");
 
-			impl.beacon_url = "http:" + impl.beacon_url;
+			//impl.beacon_url = "http:" + impl.beacon_url;
 
 			// If beacon_url is protocol relative, make it https only
-			/*
+			
 			if (impl.beacon_url_force_https && impl.beacon_url.match(/^\/\//)) {
-				impl.beacon_url = "http:" + impl.beacon_url;
+				impl.beacon_url = "https:" + impl.beacon_url;
 			}
-			*/
 
 			// if there are already url parameters in the beacon url,
 			// change the first parameter prefix for the boomerang url parameters to &
