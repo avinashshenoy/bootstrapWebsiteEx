@@ -58,19 +58,38 @@
       delete localStorage._boomr_akamaiXhrRetry;
     </script>
     <script type="text/javascript">
+
+      function firstXHRCallBack() {
+        var firstXHR = new XMLHttpRequest();
+        firstXHR.open('POST', 'https://17d98a59.akstat.io', false);
+        firstXHR.setRequestHeader('Content-Type', 'text/plain');
+        firstXHR.send();
+      }
+
+      if (document.addEventListener) {
+        console.log("Subscribing to boomerangLoaded for Making first XHR request");
+        document.addEventListener("onBoomerangLoaded", firstXHRCallBack);
+      }
+      else if (document.attachEvent) {
+        console.log("Subscribing to onBoomerangLoaded for Making first XHR request");
+        document.attachEvent("onpropertychange", function(e) {
+          e = e || window.event;
+          if (e && e.propertyName === "onBoomerangLoaded") {
+            firstXHRCallBack();
+          }
+        });
+      }
+
+      /*
       (function(){
         if (window.BOOMR) {
           console.log("Subscribing to config for Making first XHR request");
-          window.BOOMR.subscribe("config", function(){
-            var firstXHR = new XMLHttpRequest();
-            firstXHR.open('POST', 'https://17d98a59.akstat.io', false);
-            firstXHR.setRequestHeader('Content-Type', 'text/plain');
-            firstXHR.send();
-          }, null, null);
+          window.BOOMR.subscribe("config", firstXHRCallBack, null, null);
         } else {
           console.log("BOOMR not present on page yet");
         }
       })();
+      */
     </script>
 
     <div class="container">
