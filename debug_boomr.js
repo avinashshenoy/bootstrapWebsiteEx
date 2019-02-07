@@ -355,7 +355,7 @@ BOOMR_check_doc_domain();
 		beacon_url: "",
 
 		// Forces protocol-relative URLs to HTTPS
-		beacon_url_force_https: true,
+		beacon_url_force_https: false,
 
 		// List of string regular expressions that must match the beacon_url.  If
 		// not set, or the list is empty, all beacon URLs are allowed.
@@ -27866,7 +27866,8 @@ BOOMR_check_doc_domain();
 
 		url = "https://c.go-mpulse.net/api/config.json";
 		url += "?key=" +
-		    BOOMR.getVar("h.key") +
+			"U8JQF-25KGJ-WEKXK-YD63Q-U5EAE" +
+		    //BOOMR.getVar("h.key") +
 		    "&d=" + encodeURIComponent(dom) +
 		    // add time field at 5 minute resolution so that we force a cache bust if the browser's being nasty
 		    "&t=" + Math.round(t_start / (5 * 60 * 1000)) +
