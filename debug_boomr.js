@@ -3600,8 +3600,16 @@ BOOMR_check_doc_domain();
 					type: "application/x-www-form-urlencoded"
 				});
 
-				if (w.navigator.sendBeacon(impl.beacon_url, blobData)) {
-					return true;
+				try {
+					if (w.navigator.sendBeacon(impl.beacon_url, blobData)) {
+						BOOMR.log("Send beacon API exec return code: true");
+						return true;
+					}
+					else {
+						BOOMR.log("Send beacon API exec return code: false");
+					}
+				} catch (beaconError) {
+					BOOMR.log("Send beacon ran into error: " + beaconError);
 				}
 
 				// sendBeacon was not successful, try Image or XHR beacons
