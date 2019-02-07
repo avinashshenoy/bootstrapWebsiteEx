@@ -3607,10 +3607,12 @@ BOOMR_check_doc_domain();
 				try {
 					if (w.navigator.sendBeacon(impl.beacon_url, blobData)) {
 						BOOMR.log("Send beacon API exec return code: true");
+						alert("Send beacon API executed successfully");
 						return true;
 					}
 					else {
 						BOOMR.log("Send beacon API exec return code: false");
+						alert("Send beacon API failed");
 					}
 				} catch (beaconError) {
 					BOOMR.log("Send beacon ran into error: " + beaconError);
