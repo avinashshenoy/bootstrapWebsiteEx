@@ -60,13 +60,15 @@
     <script type="text/javascript">
       (function(){
         if (window.BOOMR) {
-          console.log("Making first XHR request");
+          console.log("Subscribing to config for Making first XHR request");
           window.BOOMR.subscribe("config", function(){
             var firstXHR = new XMLHttpRequest();
             firstXHR.open('POST', 'https://17d98a59.akstat.io', false);
             firstXHR.setRequestHeader('Content-Type', 'text/plain');
             firstXHR.send();
           }, null, null);
+        } else {
+          console.log("BOOMR not present on page yet");
         }
       })();
     </script>
