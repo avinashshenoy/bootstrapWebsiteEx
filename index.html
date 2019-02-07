@@ -47,6 +47,20 @@
       })();
     </script>
 
+    <script type="text/javascript">
+      (function(){
+        if (window.BOOMR) {
+          console.log("Making first XHR request");
+          window.BOOMR.subscribe("config", function(){
+            var firstXHR = new XMLHttpRequest();
+            firstXHR.open('POST', 'https://17d98a59.akstat.io', false);
+            firstXHR.setRequestHeader('Content-Type', 'text/plain');
+            firstXHR.send();
+          }, null, null);
+        }
+      })();
+    </script>
+
     <!-- Bootstrap CSS -->
     <!--
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
