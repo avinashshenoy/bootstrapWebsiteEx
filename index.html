@@ -60,10 +60,16 @@
     <script type="text/javascript">
 
       function firstXHRCallBack() {
-        var firstXHR = new XMLHttpRequest();
-        firstXHR.open('POST', 'https://17d98a59.akstat.io', false);
-        firstXHR.setRequestHeader('Content-Type', 'text/plain');
-        firstXHR.send();
+        BOOMR.subscribe("config", function(beaconConfig) {
+          if (beaconConfig.beacon_url) {
+            var beacon_url = beaconConfig.beacon_url;
+
+            var firstXHR = new XMLHttpRequest();
+            firstXHR.open('POST', beacon_url, false);
+            firstXHR.setRequestHeader('Content-Type', 'text/plain');
+            firstXHR.send();
+          }
+        });
       }
 
       if (document.addEventListener) {
